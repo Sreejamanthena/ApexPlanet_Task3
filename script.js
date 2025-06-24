@@ -28,6 +28,7 @@ const questions = [
 
 let currentQuestion = 0;
 let score = 0;
+let selectedOption = null;
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
@@ -39,27 +40,44 @@ function loadQuestion() {
   const current = questions[currentQuestion];
   questionEl.textContent = current.question;
   optionsEl.innerHTML = "";
+  nextBtn.disabled = true;
+  selectedOption = null;
 
   current.options.forEach(option => {
     const li = document.createElement("li");
     li.textContent = option;
-    li.onclick = () => checkAnswer(option);
+    li.onclick = () => selectOption(li, option);
     optionsEl.appendChild(li);
   });
 }
 
-function checkAnswer(selectedOption) {
-  const correctAnswer = questions[currentQuestion].answer;
-  if (selectedOption === correctAnswer) score++;
-  currentQuestion++;
-  currentQuestion < questions.length ? loadQuestion() : showResult();
+function selectOption(li, optionText) {
+  const allOptions = document.querySelectorAll("li");
+  allOptions.forEach(opt => opt.classList.remove("selected"));
+
+  li.classList.add("selected");
+  selectedOption = optionText;
+  nextBtn.disabled = false;
 }
+
+nextBtn.onclick = () => {
+  if (selectedOption === questions[currentQuestion].answer) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+};
 
 function showResult() {
   document.getElementById("quiz-box").classList.add("hide");
-  resultEl.classList.add("show");
-  scoreEl.textContent = score;
+  resultEl.classList.remove("hide");
+  scoreEl.textContent = `${score}/${questions.length}`;
 }
 
-nextBtn.addEventListener("click", loadQuestion);
 loadQuestion();
