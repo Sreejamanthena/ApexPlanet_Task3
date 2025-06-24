@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
-
-* {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  font-family: 'Poppins', sans-serif;
+  background-color: #DFF0E3; /* Soft Mint Green */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,24 +11,23 @@ body {
 }
 
 .quiz-container {
-  background: #ffffff;
-  padding: 40px 30px;
+  background: #fff;
+  padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   width: 90%;
   max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 25px;
-  color: #f76b1c;
+  color: #7A9E88;
 }
 
-#quiz-box h2 {
+#question {
   font-size: 20px;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  color: #444;
 }
 
 ul {
@@ -42,50 +37,42 @@ ul {
 }
 
 ul li {
-  background: #f1f1f1;
-  margin: 10px 0;
-  padding: 12px 16px;
+  background: #f8f8f8;
+  margin: 8px 0;
+  padding: 12px;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
   border: 2px solid transparent;
+  color: #333;
 }
 
 ul li:hover {
-  background: #ffe7cc;
-  border-color: #f76b1c;
+  background-color: #f0f0f0;
+}
+
+ul li.selected {
+  background-color: #F8E6EC;  /* Lighter pastel pink */
+  border-color: #e7cbd1;
+  color: #000;
 }
 
 button {
   padding: 12px 20px;
   margin-top: 20px;
-  background: #f76b1c;
+  background: #7A9E88;
   color: white;
   border: none;
   border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background: #c24e0e;
+  background: #64806f;
 }
 
-#result {
+.hide {
   display: none;
-}
-
-#result.show {
-  display: block;
-}
-
-#result h2 {
-  color: #f76b1c;
-}
-
-#score {
-  font-weight: bold;
-  font-size: 22px;
-  color: #333;
 }
